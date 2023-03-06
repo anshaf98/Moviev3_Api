@@ -1,0 +1,30 @@
+import { getStorage } from "firebase-admin/storage";
+import { initializeApp, cert } from "firebase-admin/app";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+initializeApp({
+  credential: cert({
+    type: "service_account",
+    project_id: "movie-version1-61c38",
+    private_key_id: "d64001fd0bfe02cd74485e0be942a50248ead733",
+    private_key:
+      "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDRlqAKevOKHCQY\nw9rKXwF6ycQ07Ro6Bo3c9+GzPMwqLwphB3izUvM5GnnJZAyK1XbGx+2vEi2fAaCb\nqM8LxqNsh6k7zu/Ae3ooU3hMbHDIdMyJ4lxGz0IwBgPmPIAtH00s+CUJOi1VWc9u\nccpTFfybFRAHXPk8TSY9BgREJzYbtWkkZIwO1Jm/ejhw/USfJp5vtizjg+EH9A+W\nFkvcWceDGR8651P3NKe+FbeZelwe7mlgyyxO8Yn5611RTElFlieO68/mRbmreZHy\noEacmYrExRGUGC1VW1Jul56s85DCknZ6XYRL848m8WZEQQrBdZLu6G/6iqkASCB2\n//CQBicrAgMBAAECggEADXkmXqYaw9UdSO5GQV4sJS2VTGW1mudS9VKGEtSkt02A\n2E33p2d8tT4LeDPTTpV8ZjjyAaAkiKU9IuSOMs6ZMN/jtDGQXgpSBweeoyMReQFx\nKKgBkJfARIAOfh2Di+MIPgzRrK8tvN/iItJz1DWEoJ+RATgr2YGIJMIfQhZXNx6r\njI4O3QTFyKdffP+uEnvuiaLAthkcplPWpsL87AFtsTHZZCL3+6syopRgB9ha5xX7\nFpwGvVzKmHqdYxQRTjjSorjH6ajYOeCU64tk4t/dYsA3kf9xlQuuKqHKPBys9Z2a\nX1dXkw7pcqLiFbj7W5i9JAkNblXwlsHb2tyr+UQ1IQKBgQDyiVjtJ34Ci64yEX5B\nCkh8b5yAXzQ+19TGMuM3hbbW0+NhQlHQj75lXsXfna9BEUvwdN4xP7uizqieWq3s\nzxqNC/Il12ssFeU/z3LjeHkGb1btp6agcxvrBFUb0FB78J807W/84f1S05dOp5Kv\nHovknNuTOc2XqvG+lP0Nz1jQkQKBgQDdOQ5zg2cw+IrQ8EmJfv4IYlapAGcLClug\nfK6Czu2y2WiBY8+oT2NnZCwjUWMIIPb8IvigUI+Ia8eVuRj10HeKf11mlTfk29Wn\noAdiJw8Pz6bAzdFHlS693RtjFo0FAPKWn7irTSFJatj8K6fKX+JInWLgUHv+ZK8A\nEb1xMBuZ+wKBgQDfezd5rv4pklO8xumzPKp2HtHyZ8dYcMAasSE1M/y6Dxxhrh59\nMzaZaa6i0kV+i1WSB94FO1jGN+6fm6bPojYw6WUDAXA7eyF2nsyaVZQPHeDXs7eR\n+P8smx1hN54x1hKdTnv2ZLZr75RoYXiD7H2y9eZNzuFmc5m1pstWQkzwQQKBgQCI\ngAowsGXdy54r6fgWBOvOVI9QXFU4dL2wuv4a7H+ymX9oRyP8oG+ffinV6QQIIf8D\n+Lgcg1jtPkO6WKnUEzuPk6MYBv6kEhk1AwNLRvp+MQydbuGxH5XlxSZ+7404Byuo\nUQlreX4OhQU6I922e49uat51tnOrtohcrJWN37dIPQKBgQCeqPVYNK6zNohyDJNa\nsipLjoD7MP182vj7Fccrn5LEMc1apQEhxGfqoVmwGmkZiiKqff3o8bhS6sqTg2h/\nwu6yNNVNCS2a8kBMsa9zwJoWEeVrolIm3rTWdiUjSp4byNdtucEX0a1w1agDpIoE\nLegZkGq8jSTH3GBsxErQo7Yx/w==\n-----END PRIVATE KEY-----\n",
+    client_email:
+      "firebase-adminsdk-pkqps@movie-version1-61c38.iam.gserviceaccount.com",
+    client_id: "118411118251575475282",
+    auth_uri: "https://accounts.google.com/o/oauth2/auth",
+    token_uri: "https://oauth2.googleapis.com/token",
+    auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
+    client_x509_cert_url:
+      "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-pkqps%40movie-version1-61c38.iam.gserviceaccount.com",
+  }),
+
+  // storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  storageBucket: "gs://movie-version1-61c38.appspot.com",
+});
+
+const storage = getStorage().bucket();
+
+export default storage;
